@@ -1,0 +1,241 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* True Grade Transport Design System
+   Brand Colors: Electric Blue, Energy Orange, Industrial Black, High-Contrast Silver
+   All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    /* Clean Light Theme - Default */
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Electric Blue - Primary Brand */
+    --primary: 200 100% 42%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Energy Orange - Secondary/Action */
+    --secondary: 13 96% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Soft Grays */
+    --muted: 210 20% 96%;
+    --muted-foreground: 215 16% 46%;
+
+    /* Accent */
+    --accent: 210 20% 96%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* UI Elements */
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 200 100% 42%;
+
+    --radius: 0.75rem;
+
+    /* Custom Brand Tokens */
+    --electric-blue: 200 100% 42%;
+    --energy-orange: 13 96% 50%;
+    --safety-orange: 33 100% 50%;
+    --industrial-black: 222 47% 11%;
+    --metallic-silver: 210 20% 93%;
+    --chrome: 215 16% 65%;
+    --nav-solid: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(210 20% 98%) 50%, hsl(0 0% 100%) 100%);
+    --gradient-electric: linear-gradient(135deg, hsl(200 100% 42%) 0%, hsl(210 100% 55%) 100%);
+    --gradient-energy: linear-gradient(135deg, hsl(13 96% 50%) 0%, hsl(25 100% 55%) 100%);
+    --gradient-metallic: linear-gradient(180deg, hsl(210 20% 93%) 0%, hsl(210 16% 78%) 100%);
+
+    /* Shadows */
+    --shadow-electric: 0 10px 30px hsl(200 100% 42% / 0.15);
+    --shadow-energy: 0 10px 30px hsl(13 96% 50% / 0.12);
+    --shadow-card: 0 12px 30px hsl(222 47% 11% / 0.08);
+    --glow-electric: 0 0 0 transparent;
+    --glow-energy: 0 0 0 transparent;
+
+    /* Sidebar (compat) */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 200 100% 42%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 20% 96%;
+    --sidebar-accent-foreground: 222 47% 11%;
+    --sidebar-border: 214 32% 91%;
+    --sidebar-ring: 200 100% 42%;
+  }
+  /* ===== True Grade Hero Text Style ===== */
+  .tg-metal {
+   background: linear-gradient(
+    90deg,
+    #2b8cff 0%,
+    #d7d7d7 40%,
+    #ffffff 55%,
+    #d7d7d7 70%,
+    #ff7a18 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.55),
+    0 0 25px rgba(43, 140, 255, 0.20),
+    0 0 25px rgba(255, 122, 24, 0.18);
+}
+
+.tg-transport {
+  color: rgba(255, 255, 255, 0.88);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.42em;
+}
+
+.tg-tagline {
+  color: rgba(255, 255, 255, 0.78);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.55);
+  letter-spacing: 0.15em;
+}
+
+
+  .dark {
+    /* Already dark by default, but keeping for consistency */
+    --background: 200 20% 7%;
+    --foreground: 210 20% 95%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+  }
+}
+
+@layer components {
+  /* Pulsing 24/7 Status Indicator */
+  .status-pulse {
+    @apply relative;
+  }
+  
+  .status-pulse::before {
+    content: '';
+    @apply absolute inset-0 rounded-full animate-ping bg-secondary opacity-75;
+  }
+
+  /* Electric Glow Effect */
+  .electric-glow {
+    box-shadow: var(--glow-electric);
+  }
+
+  .energy-glow {
+    box-shadow: var(--glow-energy);
+  }
+
+  /* Metallic Text Effect */
+  .text-metallic {
+    background: var(--gradient-metallic);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Card Hover Effect */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1;
+    box-shadow: var(--shadow-card), var(--shadow-electric);
+  }
+
+  /* Hero Gradient Overlay */
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      hsl(0 0% 100% / 0.55) 0%,
+      hsl(0 0% 100% / 0.75) 50%,
+      hsl(0 0% 100%) 100%
+    );
+  }
+
+  /* Section Divider */
+  .section-divider {
+    @apply h-px w-full;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--electric-blue) / 0.5) 50%,
+      transparent 100%
+    );
+  }
+}
+
+@layer utilities {
+  /* Custom Animations */
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(200 100% 42% / 0.4);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(200 100% 42% / 0.7), 0 0 60px hsl(200 100% 42% / 0.4);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(222 47% 11% / 0.06) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
