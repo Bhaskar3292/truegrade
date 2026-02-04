@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import ServiceGrid from "@/components/ServiceGrid";
 import ComplianceBar from "@/components/ComplianceBar";
 import BookingForm from "@/components/BookingForm";
-import TrustSignals from "@/components/TrustSignals";
+import OfferCoverageSection from "@/components/OfferCoverageSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -17,7 +17,7 @@ const Index = () => {
           <ServiceGrid />
         </div>
         <BookingForm />
-        <TrustSignals />
+        <OfferCoverageSection />
       </main>
       <Footer />
     </div>
