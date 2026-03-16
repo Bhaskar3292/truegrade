@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate, Link, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -32,14 +32,17 @@ export default function Login() {
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok) {
-        setError(data?.message || "Login failed");
+        console.error("Login failed:", res.status, data);
+        setError(data?.error || data?.message || "Incorrect login details");
         return;
       }
 
       localStorage.setItem("tg_token", data.token);
+      localStorage.setItem("tg_user", JSON.stringify(data.user));
       navigate("/booking", { replace: true });
-    } catch {
-      setError("Server not reachable. Please try again.");
+    } catch (err) {
+      console.error("Network error:", err);
+      setError("Cannot connect to server. Please ensure the backend is running on port 3001.");
     } finally {
       setLoading(false);
     }
@@ -108,13 +111,9 @@ export default function Login() {
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        {/* ✅ Create account link */}
-        <div className="mt-4 text-sm text-muted-foreground text-center">
-          No account?{" "}
-          <Link to="/signup" className="text-orange-600 font-semibold hover:underline">
-            Create Account
-          </Link>
-        </div>
+        <p className="mt-4 text-sm text-muted-foreground text-center">
+          Accounts are created by administrators only.
+        </p>
       </div>
     </div>
   );
