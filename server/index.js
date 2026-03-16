@@ -11,19 +11,18 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
-// Frontend runs on Vite usually: http://localhost:5173
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080", "http://localhost:8081"],
+    origin: ["http://localhost:5173", "http://127.0.0.1:5173", "http://localhost:8080", "http://localhost:8081", "http://127.0.0.1:8080"],
     credentials: true,
   })
 );
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 const JWT_SECRET = process.env.JWT_SECRET || "dev_secret";
 
 const TEAM_NOTIFY_EMAIL = process.env.TEAM_NOTIFY_EMAIL;
-const APP_BASE_URL = process.env.APP_BASE_URL || "http://localhost:5173";
+const APP_BASE_URL = process.env.APP_BASE_URL || "http://localhost:8080";
 const SERVER_BASE_URL = process.env.SERVER_BASE_URL || `http://localhost:${PORT}`;
 
 const isGmail = (email) =>

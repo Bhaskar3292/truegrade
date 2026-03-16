@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3001";
 
@@ -112,7 +112,10 @@ export default function Login() {
         </button>
 
         <p className="mt-4 text-sm text-muted-foreground text-center">
-          Accounts are created by administrators only.
+          Don't have an account?{" "}
+          <Link to="/signup" className="text-orange-600 font-semibold hover:underline">
+            Create Account
+          </Link>
         </p>
       </div>
     </div>
