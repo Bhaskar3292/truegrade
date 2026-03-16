@@ -25,7 +25,11 @@ export default function Login() {
     try {
       const res = await fetch(`${API_BASE}/api/auth/login`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        mode: "cors",
         body: JSON.stringify({ email, phone, password }),
       });
 

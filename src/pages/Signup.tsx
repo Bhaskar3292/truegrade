@@ -42,9 +42,16 @@ export default function Signup() {
     try {
       setLoading(true);
 
-      const res = await fetch(`${API_BASE}/api/auth/signup`, {
+      const apiUrl = `${API_BASE}/api/auth/signup`;
+      console.log("Calling API:", apiUrl);
+
+      const res = await fetch(apiUrl, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        mode: "cors",
         body: JSON.stringify({
           firstName: firstName.trim(),
           lastName: lastName.trim(),
@@ -68,7 +75,11 @@ export default function Signup() {
       setTimeout(() => navigate("/login"), 4000);
     } catch (err: any) {
       console.error("Signup error:", err);
-      setError(err.message || "Cannot connect to server. Please ensure the backend is running.");
+      setError(
+        err.message ||
+        "Cannot connect to server. Please ensure the backend is running on port 3001. " +
+        "If you're on HTTPS, the backend may need to use HTTPS too."
+      );
     } finally {
       setLoading(false);
     }
