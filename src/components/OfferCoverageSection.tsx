@@ -50,7 +50,7 @@ const OfferCoverageSection = () => {
             SPECIAL OFFER
           </p>
           <h2 className="text-3xl md:text-5xl font-bold mb-6">
-            FLAT $250 DELIVERY <span className="text-orange-500">(FREIGHT)</span>
+            FLAT $250 DELIVERY <span className="text-orange-500">(FREGHT)</span>
           </h2>
           <p className="text-lg text-slate-600 mb-4">
             Within 60 miles of our terminals
