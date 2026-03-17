@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Phone, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/brand-logo.png";
 import { getSession, logout } from "@/lib/auth";
@@ -108,13 +107,6 @@ const Navbar = () => {
                 Login
               </Link>
             )}
-
-            <Button variant="safety" size="sm" asChild>
-              <a href="tel:+18005551234">
-                <Phone className="mr-2 h-4 w-4" />
-                Emergency
-              </a>
-            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -170,13 +162,6 @@ const Navbar = () => {
                   Login
                 </Link>
               )}
-
-              <Button variant="safety" asChild className="mt-2">
-                <a href="tel:+18005551234">
-                  <Phone className="mr-2 h-4 w-4" />
-                  Call Emergency Dispatch
-                </a>
-              </Button>
             </div>
           </div>
         )}
